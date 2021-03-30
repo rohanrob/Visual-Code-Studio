@@ -29,8 +29,8 @@ resource "azurerm_virtual_network" "myvnet" {
 
 # Create a subnet within the vnet
 resource "azurerm_virtual_network" "mysubnet" {
-  name                = "rohan-subnet"
-  resource_group_name = "azurerm_resource_group.myrg.name"
-  virtual_network_name= "azurerm_resource_network.myvnet.location"
-  address_space    = ["10.0.0.0/24"]
+  name                 = "rohan-subnet"
+  resource_group_name  = "azurerm_resource_group.myrg.name"
+  virtual_network_name = "azurerm_resource_network.myvnet.location"
+  address_space        = ["10.0.0.0/24"]
 }
