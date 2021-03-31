@@ -49,7 +49,6 @@ resource "azurerm_network_interface" "mynic" {
 }
 
 # Create a Virtual Machine in Azure
-
 resource "azurerm_windows_virtual_machine" "myVM" {
   name                = "myVM01"
   resource_group_name = azurerm_resource_group.myrg.name
