@@ -56,6 +56,7 @@ resource "azurerm_windows_virtual_machine" "myVM" {
   location            = azurerm_resource_group.myrg.location
   size                = "Standard_A1_v2"
   admin_username      = "student"
+  admin_password      = "Pa55w.rd1234"
   network_interface_ids = [
     azurerm_network_interface.mynic.id,
   ]
