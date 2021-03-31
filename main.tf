@@ -34,3 +34,16 @@ resource "azurerm_subnet" "mysubnet" {
   virtual_network_name = "azurerm_virtual_network.mynet.name"
   address_prefixes     = ["10.0.0.0/24"]
 }
+
+# Create a network interface for VM
+resource "azurerm_network_interface" "mynic" {
+  name                = "rohan-nic"
+  location            = azurerm_resource_group.myrg.location
+  resource_group_name = azurerm_resource_group.myrg.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.mysubnet.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
