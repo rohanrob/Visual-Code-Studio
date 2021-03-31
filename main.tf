@@ -47,3 +47,28 @@ resource "azurerm_network_interface" "mynic" {
     private_ip_address_allocation = "Dynamic"
   }
 }
+
+# Create a Virtual Machine in Azure
+
+resource "azurerm_windows_virtual_machine" "myVM" {
+  name                = "myVM01"
+  resource_group_name = azurerm_resource_group.myrg.name
+  location            = azurerm_resource_group.myrg.location
+  size                = "Standard_A1_v2"
+  admin_username      = "student"
+  network_interface_ids = [
+    azurerm_network_interface.mynic.id,
+  ]
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2016-Datacenter"
+    version   = "latest"
+  }
+}
