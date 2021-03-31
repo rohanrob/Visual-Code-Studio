@@ -31,5 +31,6 @@ resource "azurerm_virtual_network" "myvnet" {
 resource "azurerm_subnet" "mysubnet" {
   name                 = "rohan-subnet"
   resource_group_name  = "azurerm_resource_group.myrg.name"
-  address_space        = ["10.0.0.0/24"]
+  virtual_network_name = "azurerm_virtual_network.mynet.name"
+  address_prefixes     = ["10.0.0.0/24"]
 }
